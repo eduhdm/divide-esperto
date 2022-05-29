@@ -84,7 +84,7 @@ class ExpenseValue(ExpenseBase):
     super().__init__(paid_by, used_by, total_value, description)
 
     if(len(used_by) != len(value_used)):
-      raise Exception('Used list and percentage list must have the same length.')
+      raise Exception('Used list and value list must have the same length.')
 
     if (sum(value_used) != self.total_value):
       raise Exception('Sum of used value must be equal total value.')
@@ -106,27 +106,28 @@ class ExpenseValue(ExpenseBase):
     return self.total_value
 
 class Expense:
-  expense: ExpenseBase
+  _expense: ExpenseBase
   id: int
 
   def __init__(self, id, expense_type: ExpenseTypes = None, **kwargs):
-    print(kwargs)
     self.id = id
     if(expense_type == ExpenseTypes.EQUAL):
-      self.expense = ExpenseEqual(**kwargs)
+      self._expense = ExpenseEqual(**kwargs)
     elif(expense_type == ExpenseTypes.PERCENTAGE):
-      self.expense = ExpensePercentage(**kwargs)
+      self._expense = ExpensePercentage(**kwargs)
     elif(expense_type == ExpenseTypes.VALUE):
-      self.expense = ExpenseValue(**kwargs)
+      self._expense = ExpenseValue(**kwargs)
     else:
       raise Exception("Invalid Expense type.")
 
   def get_user_balance(self, user_id):
-    return self.expense.get_user_balance(user_id)
+    return self._expense.get_user_balance(user_id)
 
   def get_paid_by(self):
-    return self.expense.paid_by
+    return self._expense.paid_by
 
   def get_used_by(self):
-    return self.expense.used_by
+    return self._expense.used_by
 
+  def get_expense(self):
+    return self._expense
