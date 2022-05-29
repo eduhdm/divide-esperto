@@ -16,16 +16,3 @@ jobs:
 
       - name: Run tests and generate .coverage file
         run: coverage report -m
-
-      - name: Coverage comment
-        id: coverage_comment
-        uses: ewjoachim/python-coverage-comment-action@v2
-        with:
-          GITHUB_TOKEN: ${{ github.token }}
-
-      - name: Store Pull Request comment to be posted
-        uses: actions/upload-artifact@v2
-        if: steps.coverage_comment.outputs.COMMENT_FILE_WRITTEN == 'true'
-        with:
-          name: python-coverage-comment-action
-          path: python-coverage-comment-action.txt
