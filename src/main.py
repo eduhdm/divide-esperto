@@ -1,4 +1,4 @@
-from src.expenses.group import Group
+from expenses.group import Group
 
 def main():
   group = Group()
