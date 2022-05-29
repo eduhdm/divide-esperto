@@ -25,11 +25,12 @@ def main():
     description='Cachaça'
   )
 
-  group.print_user_balance_report(edu_id)
+  print(group.get_user_balance_report(edu_id))
   print('----------------')
-  group.print_user_balance_report(salim_id)
+  print(group.get_user_balance_report(salim_id))
   print('----------------')
-  group.print_user_balance_report(lukinhas_id)
+  print(group.get_user_balance_report(lukinhas_id))
   print('----------------')
 
-main()
+if __name__ == '__main__':
+  main()

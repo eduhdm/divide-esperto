@@ -18,7 +18,8 @@ class Group:
 
   def __init__(self, split_calc_type: SplitCalc = SplitCalc.DEFAULT):
     self.expenses = []
-    self.users = []
+    self.balance_users = []
+    self.user_dict = dict()
     self.split_calc_type = split_calc_type
 
   def _get_balance_index(self, user_id_a, user_id_b):
@@ -41,7 +42,7 @@ class Group:
 
 
   def add_user(self, user_name: str) -> int:
-    user_id = len(self.user_dict.keys()) + 1
+    user_id = len(self.user_dict) + 1
     user = User(user_id, user_name)
     self.user_dict[user_id] = user
 
@@ -64,20 +65,21 @@ class Group:
 
     return expense_id
 
-  def print_user_balance_report(self, user_id):
+  def get_user_balance_report(self, user_id) -> str:
     if(user_id not in self.user_dict):
       raise UserNotFoundException(user_id)
 
+    report = ''
     user = self.user_dict[user_id]
-    print(f"Overall situation of {user.name}:")
+    report += (f'Overall situation of {user.name}:\n')
     if (user.total_balance == 0):
-      print('\tYou are all set.')
+      report += ('\tYou are all set.\n')
     elif (user.total_balance > 0):
-      print(f'\tYou are owed {user.total_balance}')
+      report += (f'\tYou are owed {user.total_balance}\n')
     else:
-      print(f'\tYou owe {-user.total_balance}')
+      report += (f'\tYou owe {-user.total_balance}\n')
 
-    print("Balance by user:")
+    report += ('Balance by user:\n')
     for balance in self.balance_users:
       if(user_id not in [balance.user_a, balance.user_b]):
         continue
@@ -85,7 +87,8 @@ class Group:
       balance_value = balance.get_user_balance(user_id)
       other_user = self.user_dict[balance.get_counterparty_id(user_id)]
       if(balance_value > 0):
-        print(f"\t{other_user.name} owes you a total of {balance_value}")
+        report += (f'\t{other_user.name} owes you a total of {balance_value}\n')
       elif(balance_value < 0):
-        print(f"\tYou owe a total of {-balance_value} to {other_user.name}")
+        report += (f'\tYou owe a total of {-balance_value} to {other_user.name}\n')
+    return report
 
