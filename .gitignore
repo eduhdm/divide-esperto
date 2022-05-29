@@ -1,3 +1,4 @@
 *.swp
 virtualenv
 __pycache__
+.coverage
