@@ -1,8 +1,8 @@
 from enum import Enum
 from typing import Dict, List
-from expenses.balance import Balance
-from expenses.expense import Expense
-from expenses.user import User
+from src.expenses.balance import Balance
+from src.expenses.expense import Expense
+from src.expenses.user import User
 
 class SplitCalc(Enum):
   DEFAULT = 1 # Show all values that a user owes to others
