@@ -1,6 +1,6 @@
 from enum import Enum
 from typing import Dict, List
-from src.exceptions.exceptions import UserNotFoundException
+from exceptions.exceptions import UserNotFoundException
 from expenses.balance import Balance
 from expenses.expense import Expense
 from expenses.user import User
