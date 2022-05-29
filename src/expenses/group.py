@@ -1,9 +1,9 @@
 from enum import Enum
 from typing import Dict, List
 from src.exceptions.exceptions import UserNotFoundException
-from expenses.balance import Balance
-from expenses.expense import Expense
-from expenses.user import User
+from src.expenses.balance import Balance
+from src.expenses.expense import Expense
+from src.expenses.user import User
 
 class SplitCalc(Enum):
   DEFAULT = 1 # Show all values that a user owes to others
@@ -52,7 +52,7 @@ class Group:
     expense = Expense(expense_id, **kwargs)
     self.expenses.append(expense)
 
-    paid_by_id = expense.paid_by
+    paid_by_id = expense.get_paid_by()
     self.user_dict[paid_by_id].add_balance(expense.get_user_balance(paid_by_id))
     for user_id in self.user_dict.keys():
       if (user_id == paid_by_id):
@@ -60,7 +60,7 @@ class Group:
 
       value_owed = expense.get_user_balance(user_id)
       self.user_dict[user_id].add_balance(value_owed)
-      self._upsert_balance(expense.paid_by, user_id, -value_owed)
+      self._upsert_balance(paid_by_id, user_id, -value_owed)
 
     return expense_id
 
