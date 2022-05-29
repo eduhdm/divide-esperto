@@ -118,7 +118,7 @@ class Expense:
     elif(expense_type == ExpenseTypes.VALUE):
       self._expense = ExpenseValue(**kwargs)
     else:
-      raise Exception("Invalid Expense type.")
+      raise Exception('Invalid Expense type.')
 
   def get_user_balance(self, user_id):
     return self._expense.get_user_balance(user_id)
