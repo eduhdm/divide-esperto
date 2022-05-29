@@ -1,4 +1,5 @@
 import unittest
+from src.exceptions.exceptions import UserNotFoundException
 from src.expenses.expense import Expense
 
 class TestExpense(unittest.TestCase):
@@ -32,3 +33,12 @@ class TestExpense(unittest.TestCase):
                 used_by = [payor_id, user_id], total_value = 100)
 
         self.assertTrue(expense.get_user_balance(user_id) == -50)
+
+    def test_get_user_balance_throws_not_found(self):
+        payor_id = 1
+        user_id = 2
+        expense = Expense(id = 1, paid_by = payor_id,
+                used_by = [payor_id, user_id], total_value = 100)
+
+        with self.assertRaises(UserNotFoundException):
+            expense.get_user_balance(user_id = 3)

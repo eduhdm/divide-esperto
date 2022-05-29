@@ -22,7 +22,7 @@ class Expense:
     self.description = description
 
   def get_user_balance(self, user_id):
-    if (user_id != self.paid_by or user_id not in self.used_by):
+    if (user_id != self.paid_by and user_id not in self.used_by):
       raise UserNotFoundException(user_id)
 
     if (user_id == self.paid_by):
