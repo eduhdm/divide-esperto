@@ -1,5 +1,5 @@
 name: CI
-on: [commit, pull_request, push]
+on: [pull_request, push]
 
 jobs:
   test:
