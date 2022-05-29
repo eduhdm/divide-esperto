@@ -1,5 +1,5 @@
 from typing import List
-from expenses.user import User
+from src.expenses.user import User
 from enum import Enum
 
 class ExpenseTypes(Enum):
