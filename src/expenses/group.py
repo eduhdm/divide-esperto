@@ -1,8 +1,9 @@
 from enum import Enum
 from typing import Dict, List
-from src.expenses.balance import Balance
-from src.expenses.expense import Expense
-from src.expenses.user import User
+from src.exceptions.exceptions import UserNotFoundException
+from expenses.balance import Balance
+from expenses.expense import Expense
+from expenses.user import User
 
 class SplitCalc(Enum):
   DEFAULT = 1 # Show all values that a user owes to others
@@ -65,7 +66,7 @@ class Group:
 
   def print_user_balance_report(self, user_id):
     if(user_id not in self.user_dict):
-      raise Exception('User id was not found')
+      raise UserNotFoundException(user_id)
 
     user = self.user_dict[user_id]
     print(f"Overall situation of {user.name}:")

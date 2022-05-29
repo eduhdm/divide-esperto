@@ -1,5 +1,5 @@
 from typing import List
-from src.expenses.user import User
+from src.exceptions.exceptions import UserNotFoundException
 from enum import Enum
 
 class ExpenseTypes(Enum):
@@ -22,6 +22,9 @@ class Expense:
     self.description = description
 
   def get_user_balance(self, user_id):
+    if (user_id != self.paid_by or user_id not in self.used_by):
+      raise UserNotFoundException(user_id)
+
     if (user_id == self.paid_by):
       if (user_id in self.used_by):
         return self.total_value * ((len(self.used_by) - 1) / len(self.used_by))

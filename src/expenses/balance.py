@@ -1,3 +1,5 @@
+from src.exceptions.exceptions import UserNotFoundException
+
 class Balance:
   user_a: int
   user_b: int
@@ -13,8 +15,12 @@ class Balance:
   def add_amount(self, user_id, amount):
     if(user_id == self.user_a):
       self.amount_paid_a += amount
+      return
     if(user_id == self.user_b):
       self.amount_paid_b += amount
+      return
+
+    raise UserNotFoundException(user_id)
 
 
   def get_user_balance(self, user_id):
@@ -23,10 +29,12 @@ class Balance:
     if(user_id == self.user_b):
       return self.amount_paid_b - self.amount_paid_a
 
-    raise Exception('No user found')
+    raise UserNotFoundException(user_id)
 
   def get_counterparty_id(self, user_id):
     if(user_id == self.user_a):
       return self.user_b
     if(user_id == self.user_b):
       return self.user_a
+
+    raise UserNotFoundException(user_id)
