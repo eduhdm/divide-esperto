@@ -1,7 +1,7 @@
 # Trabalho Prático de Testes de Software
 
 Grupo:
- - Eduardo
+ - Eduardo Henrique Dias Melgaço
  - Lucas Starling de Paula Salles
  - Lucas Caetano Lopes Rodrigues
 
