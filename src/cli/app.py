@@ -65,7 +65,6 @@ class InteractiveShell(Cmd):
         return True
 
     def do_adduser(self, inp):
-        print("Adding '{}'".format(inp))
         self.controller.add_user(inp)
         print("User '{}' added".format(inp))
 
