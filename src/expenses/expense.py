@@ -20,7 +20,7 @@ class ExpenseBase:
     if(len(used_by)== 0):
       raise Exception('Used by cannot be empty.')
 
-    if(type(description) != 'str' ro len(description)== 0):
+    if(type(description) != 'str' or len(description)== 0):
       raise Exception('Description must be a valid string.')
 
     self.total_value = total_value
