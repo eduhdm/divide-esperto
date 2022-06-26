@@ -1,7 +1,7 @@
 import unittest
-from src.expenses.expense import ExpenseTypes
+from dividexp.expenses.expense import ExpenseTypes
 
-from src.expenses.group import Group, SplitCalc
+from dividexp.expenses.group import Group, SplitCalc
 
 class TestGorups(unittest.TestCase):
 

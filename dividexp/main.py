@@ -1,4 +1,4 @@
-from src.cli.app import InteractiveShell
+from dividexp.cli.app import InteractiveShell
 
 def main():
 

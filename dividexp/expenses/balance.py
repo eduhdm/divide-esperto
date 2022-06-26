@@ -1,4 +1,4 @@
-from src.exceptions.exceptions import UserNotFoundException
+from dividexp.exceptions.exceptions import UserNotFoundException
 
 class Balance:
   user_a: int
