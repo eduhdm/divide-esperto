@@ -1,8 +1,8 @@
 import unittest
-from src.exceptions.exceptions import UserNotFoundException
-from src.cli.app import ShellController
+from dividexp.exceptions.exceptions import UserNotFoundException
+from dividexp.cli.app import ShellController
 
-from src.expenses.expense import Expense, ExpenseBase, ExpenseEqual, ExpensePercentage, ExpenseTypes, ExpenseValue
+from dividexp.expenses.expense import Expense, ExpenseBase, ExpenseEqual, ExpensePercentage, ExpenseTypes, ExpenseValue
 
 class TestInteractiveShell(unittest.TestCase):
 

@@ -1,7 +1,7 @@
 from cmd import Cmd
 
-from src.expenses.group import Group
-from src.expenses.expense import ExpenseTypes
+from dividexp.expenses.group import Group
+from dividexp.expenses.expense import ExpenseTypes
 
 class ShellController():
     def __init__(self):

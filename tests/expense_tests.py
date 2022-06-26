@@ -1,6 +1,6 @@
 import unittest
-from src.exceptions.exceptions import UserNotFoundException
-from src.expenses.expense import Expense, ExpenseBase, ExpenseEqual, ExpensePercentage, ExpenseTypes, ExpenseValue
+from dividexp.exceptions.exceptions import UserNotFoundException
+from dividexp.expenses.expense import Expense, ExpenseBase, ExpenseEqual, ExpensePercentage, ExpenseTypes, ExpenseValue
 
 
 class TestExpense(unittest.TestCase):

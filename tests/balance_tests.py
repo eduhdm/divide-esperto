@@ -1,6 +1,6 @@
 import unittest
-from src.exceptions.exceptions import UserNotFoundException
-from src.expenses.balance import Balance
+from dividexp.exceptions.exceptions import UserNotFoundException
+from dividexp.expenses.balance import Balance
 
 class TestBalance(unittest.TestCase):
 

@@ -1,5 +1,5 @@
 from typing import List
-from src.exceptions.exceptions import UserNotFoundException
+from dividexp.exceptions.exceptions import UserNotFoundException
 from enum import Enum
 
 class ExpenseTypes(Enum):
