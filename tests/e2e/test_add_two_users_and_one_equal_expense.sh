@@ -1,8 +1,6 @@
 #!/bin/bash
 
-# To run these tests, run export PYTHONPATH="/path/to/root/folder"
-
-TEST=$(cat << EOF | python src/main.py
+TEST=$(cat << EOF | dividexp
 adduser Lucas
 adduser Eduardo
 addexpense
@@ -24,7 +22,7 @@ else
     exit 1
 fi
 
-TEST2=$(cat << EOF | python src/main.py
+TEST2=$(cat << EOF | dividexp
 adduser Lucas
 adduser Eduardo
 addexpense
